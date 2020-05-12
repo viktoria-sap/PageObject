@@ -1,6 +1,7 @@
-package ru.netology.domain;
+package ru.netology.pageobject.page;
 
 import com.codeborne.selenide.SelenideElement;
+import ru.netology.pageobject.data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -11,11 +12,10 @@ public class RechargingPage {
     private SelenideElement transferButton = $("[data-test-id=action-transfer]");
     private SelenideElement cancelButton = $("[data-test-id=action-cancel]");
 
-    public DashboardPage rechargeCard(DataHelper.CardInfo fromCardInfo) {
+    public void rechargeCard(DataHelper.CardInfo fromCardInfo) {
         String amountToAddForTest = "500";
         amountField.setValue(amountToAddForTest);
         fromField.setValue(fromCardInfo.getCardNumber());
         transferButton.click();
-        return new DashboardPage();
     }
 }

@@ -1,4 +1,4 @@
-package ru.netology.domain;
+package ru.netology.pageobject.data;
 
 import lombok.Value;
 
@@ -37,5 +37,18 @@ public class DataHelper {
 
     public static CardInfo getSecondCardInformation() {
         return new CardInfo("5559000000000002", "10000");
+    }
+
+
+
+    public static int checkBalanceOfCardFromWhereRechargeWasMade(int balance, int amountForRecharge) {
+        int finalBalance = balance -amountForRecharge;
+        return finalBalance;
+
+    }
+
+    public static int checkBalanceOfRechargedCard(int balance, int amountForRecharge) {
+        int finalBalance = balance + amountForRecharge;
+        return finalBalance;
     }
 }
