@@ -3,7 +3,7 @@ image: Ubuntu1804  # образ для сборки
 branches:
   only:
     - master  # ветка git
-
+stack: jdk 11
 build: off  # будем использовать свой скрипт сборки
 
 install:
