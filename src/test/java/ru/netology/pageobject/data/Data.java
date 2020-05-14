@@ -2,8 +2,8 @@ package ru.netology.pageobject.data;
 
 import lombok.Value;
 
-public class DataHelper {
-    private DataHelper() {
+public class Data {
+    private Data() {
     }
 
     @Value
