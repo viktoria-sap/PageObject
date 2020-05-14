@@ -1,6 +1,4 @@
-image: Ubuntu
-
-stack: jdk 1.8
+image: Ubuntu1804
 
 branches:
   only:
@@ -9,7 +7,10 @@ branches:
 build: off
 
 install:
-  - java -jar ./artifacts/app-ibank-build-for-testers.jar &
+  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/app-order.jar" -PassThru
 
 build_script:
-  - ./gradlew test --info
+  - ps: ./gradlew test --info "-Dselenide.headless=true"
+
+on_finish:
+  - ps: Stop-Process -Id $App.Id
