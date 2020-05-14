@@ -31,17 +31,17 @@ public class DataHelper {
         private String cardBalance;
     }
 
-    public static CardInfo getFirstCardInformation() {
+    public static CardInfo getFirstCardInfo() {
         return new CardInfo("5559000000000001", "10000");
     }
 
-    public static CardInfo getSecondCardInformation() {
+    public static CardInfo getSecondCardInfo() {
         return new CardInfo("5559000000000002", "10000");
     }
 
 
 
-    public static int checkBalanceOfCardFromWhereRechargeWasMade(int balance, int amountForRecharge) {
+    public static int checkBalanceWhereRecharge(int balance, int amountForRecharge) {
         int finalBalance = balance -amountForRecharge;
         return finalBalance;
 

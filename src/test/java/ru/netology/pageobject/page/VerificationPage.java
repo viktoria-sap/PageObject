@@ -6,7 +6,7 @@ import ru.netology.pageobject.data.DataHelper;
 import static com.codeborne.selenide.Selenide.$;
 
 public class VerificationPage {
-    private SelenideElement verificationField = $("input[name=\"code\"]");
+    private SelenideElement verificationField = $("input[name='code']");
     private SelenideElement verifyButton = $("[data-test-id=action-verify]");
 
     public DashboardPage verify(DataHelper.VerificationCode code){

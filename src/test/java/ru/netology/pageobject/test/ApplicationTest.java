@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class ApplicationTest {
-    int amountToAddForTest = 500;
+    int amountToAddForTest = 600;
 
     @Test
-    void shouldCheckTransactionIsOkFromSecondToFirst() {
+    void shouldCheckTransactionFromSecondToFirst() {
         open("http://localhost:9999");
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getAuthInfo();
@@ -24,17 +24,17 @@ public class ApplicationTest {
         int balanceOfFirstCardBefore = DashboardPage.getCurrentBalanceOfFirstCard();
         int balanceOfSecondCardBefore = DashboardPage.getCurrentBalanceOfSecondCard();
         val rechargingPage = dashboardPage.chooseFirstCardToRecharge();
-        val cardInfo = DataHelper.getSecondCardInformation();
+        val cardInfo = DataHelper.getSecondCardInfo();
         rechargingPage.rechargeCard(cardInfo);
         int balanceAfterTransactionOnRecharged = DataHelper.checkBalanceOfRechargedCard(balanceOfFirstCardBefore, amountToAddForTest);
-        int balanceAfterTransaction = DataHelper.checkBalanceOfCardFromWhereRechargeWasMade(balanceOfSecondCardBefore, amountToAddForTest);
+        int balanceAfterTransaction = DataHelper.checkBalanceWhereRecharge(balanceOfSecondCardBefore, amountToAddForTest);
         int balanceOfFirstCardAfter = DashboardPage.getCurrentBalanceOfFirstCard();
         int balanceOfSecondCardAfter = DashboardPage.getCurrentBalanceOfSecondCard();
-        assertEquals(balanceAfterTransactionOnRecharged,balanceOfFirstCardAfter );
-        assertEquals(balanceAfterTransaction,balanceOfSecondCardAfter );
+        assertEquals(balanceAfterTransactionOnRecharged,balanceOfFirstCardAfter);
+        assertEquals(balanceAfterTransaction,balanceOfSecondCardAfter);
     }
     @Test
-    void shouldCheckTransactionIsOkFromFirstToSecond() {
+    void shouldCheckTransactionFromFirstToSecond() {
         open("http://localhost:9999");
         val loginPage = new LoginPage();
         val authInfo = DataHelper.getAuthInfo();
@@ -44,10 +44,10 @@ public class ApplicationTest {
         int balanceOfFirstCardBefore = DashboardPage.getCurrentBalanceOfFirstCard();
         int balanceOfSecondCardBefore = DashboardPage.getCurrentBalanceOfSecondCard();
         val rechargingPage = dashboardPage.chooseSecondCardToRecharge();
-        val cardInfo = DataHelper.getFirstCardInformation();
+        val cardInfo = DataHelper.getFirstCardInfo();
         rechargingPage.rechargeCard(cardInfo);
         int balanceAfterTransactionOnRecharged = DataHelper.checkBalanceOfRechargedCard(balanceOfSecondCardBefore, amountToAddForTest);
-        int balanceAfterTransaction = DataHelper.checkBalanceOfCardFromWhereRechargeWasMade(balanceOfFirstCardBefore, amountToAddForTest);
+        int balanceAfterTransaction = DataHelper.checkBalanceWhereRecharge(balanceOfFirstCardBefore, amountToAddForTest);
         int balanceOfFirstCardAfter = DashboardPage.getCurrentBalanceOfSecondCard();
         int balanceOfSecondCardAfter = DashboardPage.getCurrentBalanceOfFirstCard();
         assertEquals(balanceAfterTransactionOnRecharged,balanceOfFirstCardAfter );
